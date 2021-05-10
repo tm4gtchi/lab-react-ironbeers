@@ -43,19 +43,25 @@ class RandomBeer extends React.Component {
       <>
       <div style={{
         display:'flex',
-        margin: '2rem'
+        margin: '2rem',
+        flexDirection: 'column'
+      }}>
+        <h3>{name}</h3>
+        <h5>-- "{tagline}"</h5>
+      <section style={{
+        display: 'flex',
+        flexDirection: 'row'
       }}>
         <img src={image_url} alt={name} style={{
           maxHeight: '200px'
         }}/>
         <ul>
-          <li>{name}</li>
-          <li>{tagline}</li>
-          <li>{brewdate}</li>
-          <li>{a_level}</li>
-          <li>{description}</li>
-          <li>{by}</li>
+          <li>Brew date: {brewdate}</li>
+          <li>Attenuation Level: {a_level}</li>
+          <li>Description: {description}</li>
+          <li>Brewer: {by}</li>
         </ul>
+      </section>
       </div>
       </>
     )

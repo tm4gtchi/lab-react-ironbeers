@@ -14,6 +14,12 @@ class AllBeers extends React.Component {
     })
   }
 
+  addBeer = (newBeer) => {
+    this.setState({
+      listOfBeers: this.state.newBeer.concat(newBeer),
+    })
+  }
+
   render() {
     return(
       <>
