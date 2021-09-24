@@ -1,30 +1,30 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom'; 
 import axios from 'axios';
 
-class AllBeers extends React.Component {
-  state = {
-    listOfBeers: []
+import Navbar from './Navbar'
+
+
+function AllBeers() {
+  const [listOfBeers, setListOfBeers] = useState([]);
+
+  useEffect(()=> {
+    async function getListOfBeers() {
+      const response = await axios.get("https://ih-beers-api2.herokuapp.com/beers");
+      setListOfBeers(response.data)
+    } getListOfBeers()
+  }, []);
+
+  const addBeer = (newBeer) => {
+    const AddNewBeer = newBeer.concat(newBeer)
+    setListOfBeers(AddNewBeer)
   }
 
-  async componentDidMount() {
-    let response = await axios.get('https://ih-beers-api2.herokuapp.com/beers');
-    this.setState({
-      listOfBeers: response.data
-    })
-  }
-
-  addBeer = (newBeer) => {
-    this.setState({
-      listOfBeers: this.state.newBeer.concat(newBeer),
-    })
-  }
-
-  render() {
-    return(
-      <>
+  return(
+    <>
+      <Navbar func_addBeer={addBeer} />
         <ul>
-          {this.state.listOfBeers.map((beer, index) => {
+          {listOfBeers.map((beer, index) => {
             return(
               <div key= {index}
                 style= {{
@@ -33,7 +33,7 @@ class AllBeers extends React.Component {
                   width: '50%'
 
                 }}>
-                  <h3>{beer.name}</h3>
+                <NavLink to={`beers/${beer._id}`}>{beer.name}</NavLink>
                 <section style={{
                   display: 'flex',
                   flexDirection: 'row'
@@ -52,9 +52,8 @@ class AllBeers extends React.Component {
             )
           })}
         </ul>
-      </>
-    )
-  }
-}
+    </>
+  )
 
+}
 export default AllBeers;
