@@ -22,36 +22,23 @@ function AllBeers() {
 
   return(
     <>
-      <Navbar func_addBeer={addBeer} />
-        <ul>
-          {listOfBeers.map((beer, index) => {
-            return(
-              <div key= {index}
-                style= {{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  width: '50%'
-
-                }}>
-                <NavLink to={`beers/${beer._id}`}>{beer.name}</NavLink>
-                <section style={{
-                  display: 'flex',
-                  flexDirection: 'row'
-                }}>
-                  <img src={beer.image_url} alt={beer.name} style= {{
-                    maxheight: '250px',
-                    maxWidth: '10%'
-                  }}/>
-                  <ul>
-                    <li>{beer.tagline}</li>
-                    <li>{beer.description}</li>
-                    <li>{beer.contributed_by}</li>
-                  </ul>
-                </section>
-              </div>
-            )
-          })}
-        </ul>
+    <Navbar func_addBeer={addBeer} />
+      <ul> {listOfBeers.map((beer, index) => {
+        return(
+          <div key= {index} style= {{ display: 'flex', flexDirection: 'column', width: '50%'}}>
+            <NavLink to={`beers/${beer._id}`}>{beer.name}</NavLink>
+              <section style={{ display: 'flex', flexDirection: 'row'}}>
+                <img src={beer.image_url} alt={beer.name} style= {{ maxheight: '250px', maxWidth: '10%'}}/>
+                <ul>
+                  <li>{beer.tagline}</li>
+                  <li>{beer.description}</li>
+                  <li>{beer.contributed_by}</li>
+                </ul>
+              </section>
+          </div>
+          )
+        })}
+      </ul>
     </>
   )
 

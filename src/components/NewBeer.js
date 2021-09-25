@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+import Navbar from './Navbar'
 import axios from 'axios';
 
 function NewBeer() {
@@ -31,6 +31,7 @@ function NewBeer() {
 
     return( 
      <>
+     <Navbar />
       <form onSubmit={handleFormSubmit}>
         <label htmlFor="name">Name</label>
           <input 

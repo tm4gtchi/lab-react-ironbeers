@@ -9,7 +9,6 @@ function BeerDetails({ match }){
     async function getBeerDetails() {
       const beerId = match.params.id;
       const beerFromAPI = await axios.get(`https://ih-beers-api2.herokuapp.com/beers/${beerId}`);
-        console.log(beerFromAPI.data);
         setBeerDetails(beerFromAPI.data);
     } getBeerDetails();
   }, [])
@@ -18,7 +17,7 @@ function BeerDetails({ match }){
       <>
       <Navbar />
       <div style={{marginTop:100, display:'flex', flexDirection:'column', alignItems:'center', alignContent:'center'}}>
-      <img src={beerDetails.image} alt="beer" style={{width:'50px', height:'120px'}}/>
+      <img src={beerDetails.image_url} alt="beer" style={{maxheight: '250px', maxWidth: '10%'}}/>
         <h2> {beerDetails.name} </h2>
         <h3> {beerDetails.tagline}</h3>
         <p> <strong> Created by:</strong> {beerDetails.contributed_by}</p>
@@ -26,7 +25,7 @@ function BeerDetails({ match }){
         <p> <strong> First brewed:</strong> {beerDetails.first_brewed}</p>
         <p style={{maxWidth:400}} > {beerDetails.description}</p>
       </div>
-            </>
+      </>
         )
 }
 
